@@ -35,7 +35,7 @@ jobs:
       DATABASE_URL: postgresql+asyncpg://repo_evidence:repo_evidence@localhost:5432/repo_evidence_test
       TEST_DATABASE_URL: postgresql+asyncpg://repo_evidence:repo_evidence@localhost:5432/repo_evidence_test
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.12"
@@ -51,6 +51,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: docker compose config --quiet
       - run: docker build -t repo-evidence:test .
