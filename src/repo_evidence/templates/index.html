@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}RepoEvidence — инженерная зрелость репозитория{% endblock %}
+{% block content %}
+<section class="home-hero">
+  <div class="hero-copy">
+    <div class="kicker"><span></span> Static analysis for Python backends</div>
+    <h1>Качество проекта,<br>подтверждённое кодом.</h1>
+    <p class="lead">Проверяем архитектуру, тесты, безопасность и готовность к production. Каждый вывод ведёт к конкретному файлу и строке.</p>
+    <form id="analysis-form" class="analyze-form">
+      <label for="repository-url">Публичный репозиторий GitHub</label>
+      <div class="input-row">
+        <span class="input-prefix">github.com/</span>
+        <input id="repository-url" name="repository_url" type="text" inputmode="url" required placeholder="owner/repository" autocomplete="url">
+        <button type="submit">Запустить анализ</button>
+      </div>
+      <p class="form-hint">Код не исполняется и удаляется сразу после анализа.</p>
+      <p id="form-error" class="error" hidden></p>
+    </form>
+  </div>
+  <aside class="analysis-preview" aria-label="Пример процесса анализа">
+    <div class="preview-header"><span class="window-dot"></span><strong>analysis.run</strong><code>8ed7103f</code></div>
+    <div class="preview-repo"><span class="repo-icon">PY</span><div><strong>acme/backend</strong><small>FastAPI · Python 3.12</small></div><span class="preview-score">78</span></div>
+    <ol class="pipeline-list">
+      <li class="done"><i>✓</i><span><strong>Repository indexed</strong><small>184 Python files · 42 610 LOC</small></span><time>1.2s</time></li>
+      <li class="done"><i>✓</i><span><strong>Architecture mapped</strong><small>4 boundaries · 0 cyclic imports</small></span><time>0.4s</time></li>
+      <li class="active"><i></i><span><strong>Evidence collection</strong><small>31 of 35 checks completed</small></span><time>88%</time></li>
+      <li><i></i><span><strong>Report assembly</strong><small>Waiting for evidence</small></span></li>
+    </ol>
+    <div class="preview-footer"><span><i class="legend-dot"></i> Deterministic rules</span><span>No AI scoring</span></div>
+  </aside>
+</section>
+
+<section class="proof-strip" aria-label="Возможности RepoEvidence">
+  <div><strong>35</strong><span>проверок в MVP</span></div>
+  <div><strong>7</strong><span>категорий качества</span></div>
+  <div><strong>100%</strong><span>объяснимый scoring</span></div>
+  <div><strong>0</strong><span>запусков чужого кода</span></div>
+</section>
+
+<section class="principles" id="about">
+  <div class="section-heading"><span>Почему RepoEvidence</span><h2>Не очередной рейтинг репозитория</h2><p>Результат можно проверить, повторить и обсудить на code review.</p></div>
+  <div class="principle-list">
+    <article><span>01</span><div><h3>Факт важнее мнения</h3><p>Оценка складывается из открытых правил. Каждое правило показывает найденное доказательство и свой вес.</p></div></article>
+    <article><span>02</span><div><h3>Рекомендации привязаны к коду</h3><p>Не «улучшите архитектуру», а конкретный нарушенный принцип, путь к файлу и следующий шаг.</p></div></article>
+    <article><span>03</span><div><h3>Прогресс виден по commit</h3><p>Сравнение отчётов отделяет реальное улучшение проекта от изменения версии анализатора.</p></div></article>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', path='/index.js') }}?v=2" defer></script>{% endblock %}

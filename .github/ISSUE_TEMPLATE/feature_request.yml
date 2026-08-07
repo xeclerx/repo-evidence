@@ -1,0 +1,37 @@
+name: Предложить улучшение
+description: Новая функция, правило анализа или улучшение UX
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Какую проблему решает предложение?
+      description: Опишите пользовательский сценарий, а не только желаемую реализацию.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Предлагаемое решение
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Область
+      options:
+        - Analysis rule
+        - Scoring
+        - API
+        - Web UI
+        - Infrastructure
+        - Documentation
+        - Другое
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Альтернативы и дополнительный контекст

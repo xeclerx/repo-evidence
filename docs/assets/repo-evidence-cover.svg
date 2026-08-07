@@ -1,0 +1,73 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="30" x2="1200" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111318"/>
+      <stop offset="1" stop-color="#08090B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#D3FF48"/>
+      <stop offset="1" stop-color="#87E66C"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FFFFFF" stroke-opacity="0.035"/>
+    </pattern>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="35"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" rx="28" fill="url(#bg)"/>
+  <rect width="1280" height="640" rx="28" fill="url(#grid)"/>
+  <circle cx="1125" cy="75" r="150" fill="#BDF532" fill-opacity="0.08" filter="url(#glow)"/>
+
+  <g transform="translate(72 64)">
+    <rect width="54" height="54" rx="14" fill="url(#accent)"/>
+    <path d="M17 15H29.5C36.4 15 40 18.6 40 24.1C40 28 38.1 30.9 34.4 32.3L41 40H33L27.5 33.5H24V40H17V15ZM24 21V27.8H29C31.7 27.8 33 26.5 33 24.4C33 22.2 31.7 21 29 21H24Z" fill="#0A0B0D"/>
+    <text x="72" y="22" fill="#F7F7F4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2.4">REPOEVIDENCE</text>
+    <text x="72" y="44" fill="#888C96" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" letter-spacing="0.8">STATIC ANALYSIS / PYTHON BACKEND</text>
+  </g>
+
+  <g transform="translate(72 206)">
+    <text fill="#F7F7F4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="62" font-weight="750" letter-spacing="-2.4">
+      <tspan x="0" y="0">Engineering maturity,</tspan>
+      <tspan x="0" y="72">backed by code.</tspan>
+    </text>
+    <text x="2" y="126" fill="#A7AAB2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">
+      Explainable scoring. Commit-level evidence. Zero code execution.
+    </text>
+  </g>
+
+  <g transform="translate(72 496)">
+    <rect width="164" height="44" rx="22" fill="#171A20" stroke="#292D35"/>
+    <circle cx="23" cy="22" r="5" fill="#BDF532"/>
+    <text x="38" y="28" fill="#D8DADE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">35 RULES</text>
+
+    <rect x="176" width="186" height="44" rx="22" fill="#171A20" stroke="#292D35"/>
+    <circle cx="199" cy="22" r="5" fill="#8AB4F8"/>
+    <text x="214" y="28" fill="#D8DADE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">7 CATEGORIES</text>
+
+    <rect x="374" width="218" height="44" rx="22" fill="#171A20" stroke="#292D35"/>
+    <circle cx="397" cy="22" r="5" fill="#CF8BFF"/>
+    <text x="412" y="28" fill="#D8DADE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">100% EXPLAINABLE</text>
+  </g>
+
+  <g transform="translate(920 173)">
+    <rect width="286" height="310" rx="22" fill="#12151A" stroke="#2A2E36"/>
+    <text x="28" y="40" fill="#838893" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">PROJECT REPORT</text>
+    <text x="28" y="78" fill="#F4F5F2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">owner / backend</text>
+    <text x="28" y="103" fill="#6F7580" font-family="ui-monospace, Consolas, monospace" font-size="12">commit 8ed7103f0816</text>
+
+    <circle cx="76" cy="171" r="42" stroke="#272C33" stroke-width="9"/>
+    <path d="M76 129A42 42 0 1 1 39 191" stroke="url(#accent)" stroke-width="9" stroke-linecap="round"/>
+    <text x="76" y="180" text-anchor="middle" fill="#F7F7F4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="750">82</text>
+    <text x="138" y="158" fill="#F0F1EE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Strong</text>
+    <text x="138" y="182" fill="#7F8490" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12">29 of 35 checks passed</text>
+
+    <rect x="28" y="232" width="230" height="7" rx="3.5" fill="#262A31"/>
+    <rect x="28" y="232" width="196" height="7" rx="3.5" fill="#BDF532"/>
+    <text x="28" y="271" fill="#777D88" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12">Evidence coverage</text>
+    <text x="258" y="271" text-anchor="end" fill="#E5E6E3" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">94%</text>
+  </g>
+
+  <text x="1208" y="590" text-anchor="end" fill="#4E535D" font-family="ui-monospace, Consolas, monospace" font-size="12">ANALYZER v1.0.0</text>
+</svg>

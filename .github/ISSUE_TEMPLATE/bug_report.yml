@@ -1,0 +1,57 @@
+name: Сообщить об ошибке
+description: Воспроизводимая проблема в RepoEvidence
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Спасибо за сообщение. Для уязвимостей используйте SECURITY.md, а не публичный issue.
+  - type: textarea
+    id: description
+    attributes:
+      label: Что произошло?
+      description: Опишите фактическое и ожидаемое поведение.
+      placeholder: После отправки URL задача остаётся в статусе queued…
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Как воспроизвести?
+      placeholder: |
+        1. Запустить docker compose up --build
+        2. Открыть http://localhost:8000
+        3. Вставить URL…
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Версия RepoEvidence
+      description: Commit SHA или release tag.
+  - type: dropdown
+    id: launch
+    attributes:
+      label: Способ запуска
+      options:
+        - Docker Compose
+        - PyCharm / локальный Python
+        - Другой
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Логи
+      description: Удалите токены, URL с credentials и другие чувствительные данные.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Проверки
+      options:
+        - label: Я убедился, что похожего issue ещё нет
+          required: true
+        - label: В приложенных данных нет секретов и персональной информации
+          required: true

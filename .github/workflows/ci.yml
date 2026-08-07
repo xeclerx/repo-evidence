@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: repo_evidence_test
+          POSTGRES_USER: repo_evidence
+          POSTGRES_PASSWORD: repo_evidence
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U repo_evidence"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql+asyncpg://repo_evidence:repo_evidence@localhost:5432/repo_evidence_test
+      TEST_DATABASE_URL: postgresql+asyncpg://repo_evidence:repo_evidence@localhost:5432/repo_evidence_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --frozen --extra dev
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy src
+      - run: uv run alembic upgrade head
+      - run: uv run pytest --cov --cov-report=xml
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose config --quiet
+      - run: docker build -t repo-evidence:test .

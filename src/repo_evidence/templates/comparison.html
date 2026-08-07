@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Сравнение RepoEvidence{% endblock %}
+{% block content %}
+<section class="report-shell" id="comparison-root" data-base="{{ base_id }}" data-head="{{ head_id }}">
+  <div class="kicker"><span></span> Commit comparison</div>
+  <h1 class="page-title">Изменение инженерной зрелости</h1>
+  <div id="comparison-loading" class="state-panel compact"><span class="live-dot"></span><p>Сравниваем отчёты…</p></div>
+  <div id="comparison" hidden>
+    <div class="delta-hero"><strong id="score-delta"></strong><span>изменение общего балла</span></div>
+    <div id="category-deltas" class="metrics-table comparison-metrics"></div>
+    <div class="comparison-grid"><section class="content-section"><h2>Улучшения</h2><div id="improved"></div></section><section class="content-section"><h2>Регрессии</h2><div id="regressed"></div></section></div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', path='/comparison.js') }}?v=2" defer></script>{% endblock %}

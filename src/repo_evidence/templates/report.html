@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Отчёт RepoEvidence{% endblock %}
+{% block content %}
+<section class="report-shell" data-analysis-id="{{ analysis_id }}" id="report-root">
+  <div id="loading" class="state-panel">
+    <div class="state-topline"><span class="live-dot"></span><span id="loading-phase">Ожидаем worker</span><time id="elapsed-time">00:00</time></div>
+    <h1 id="loading-title">Готовим отчёт</h1>
+    <p id="loading-status">Задача поставлена в очередь. Обычно анализ занимает меньше минуты.</p>
+    <div class="analysis-progress"><i id="progress-line"></i></div>
+    <div class="state-steps"><span class="active">Индексация</span><span>AST</span><span>Правила</span><span>Отчёт</span></div>
+    <div id="worker-hint" class="worker-hint" hidden><strong>Анализ ждёт дольше обычного.</strong> Проверьте, что Celery worker запущен. Страница продолжит следить за задачей.</div>
+  </div>
+  <div id="report" hidden>
+    <div class="report-toolbar">
+      <div class="breadcrumbs"><a href="/">Проекты</a><span>/</span><strong id="repository-name"></strong></div>
+      <a id="github-link" class="secondary-button" href="#" target="_blank" rel="noreferrer">Открыть на GitHub ↗</a>
+    </div>
+    <section class="report-summary">
+      <div class="summary-copy"><div class="report-meta"><span id="framework"></span><span id="commit"></span></div><h1>Инженерная зрелость проекта</h1><p>Результат основан на проверяемых признаках текущего commit.</p></div>
+      <div class="score-block"><strong id="score"></strong><div><span>из 100</span><b id="maturity"></b></div></div>
+      <dl class="summary-stats"><div><dt>Покрытие</dt><dd id="coverage-value"></dd></div><div><dt>Проверок</dt><dd id="checks-total"></dd></div><div><dt>Требуют внимания</dt><dd id="issues-total"></dd></div></dl>
+    </section>
+    <section class="metric-section"><div class="section-title"><div><span>Обзор</span><h2>Категории качества</h2></div><small id="coverage"></small></div><div id="categories" class="metrics-table"></div></section>
+    <div class="report-layout">
+      <section class="content-section"><div class="section-title"><div><span>Приоритеты</span><h2>Что улучшить сначала</h2></div><small id="recommendation-count"></small></div><div id="recommendations" class="recommendation-list"></div></section>
+      <aside class="history-section" id="history-panel"><div class="section-title"><div><span>Динамика</span><h2>История</h2></div></div><div id="history"></div></aside>
+    </div>
+    <section class="content-section checks-section"><div class="section-title"><div><span>Evidence log</span><h2>Все проверки</h2></div><div id="check-filters" class="filter-group"></div></div><div id="checks"></div></section>
+  </div>
+  <div id="failure" class="state-panel failure" hidden><div class="failure-code">ANALYSIS_FAILED</div><h1>Не удалось собрать отчёт</h1><p id="failure-detail"></p><div class="state-actions"><button id="retry-status" type="button">Проверить статус снова</button><a class="secondary-button" href="/">Другой репозиторий</a></div></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', path='/report.js') }}?v=2" defer></script>{% endblock %}
