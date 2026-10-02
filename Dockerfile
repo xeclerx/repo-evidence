@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:0.12.3 AS uv-bin
+FROM ghcr.io/astral-sh/uv:0.12.22 AS uv-bin
 FROM python:3.12-slim AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
